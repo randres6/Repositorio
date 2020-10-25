@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <title>eMercado - Todo lo que busques está aquí</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+
+<body>
+  <nav class="site-header sticky-top py-1 bg-dark">
+    <div class="container d-flex flex-column flex-md-row justify-content-between">
+      <a class="py-2 d-none d-md-inline-block" href="home.html">Inicio</a>
+      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
+      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
+      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
+      <div class="dropdown">
+        <button class="btn btn-default text-white dropdown-toggle" type="button" id="usuarioing" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false"></button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="cart.html">Ver mi carrito</a>
+          <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+          <a id="sesion" class="dropdown-item" href="index.html">Cerrar sesión</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Costo</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Subtotal</th>
+          <th scope="col">Imagen</th>
+          <th scope="col">¿Eliminar?</th>
+        </tr>
+      </thead>
+      <tbody id="cartlist">
+      </tbody>
+    </table>
+
+    <div class="row">
+      <div class="col col-lg-6">
+        <h4>Metodo de Envío</h4>
+        <div class="form-group">
+          <label for="direccion">Dirección de Entrega:</label>
+          <input type="text" class="form-control" id="direccion">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-lg-2">
+        <div class="form-group">
+          <label for="pais">País:</label>
+          <input type="text" class="form-control" id="pais">
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" id="premium" class="form-check-input" name="radioenvio" checked>Premium (2-5 días)
+      </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" id="express" class="form-check-input" name="radioenvio">Express (5-8 días)
+      </label>
+    </div>
+    <div class="form-check disabled">
+      <label class="form-check-label">
+        <input type="radio" id="standard" class="form-check-input" name="radioenvio">Standard (12 a 15 días)
+      </label>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col">
+        <h4 class="mb-1">Costos</h4>
+        <ul class="list-group mb-1">
+          <li class="list-group-item justify-content-between d-flex">
+            <h5>SubTotal </h5>
+            <p id="subtotal"></p>
+          </li>
+          <li class="list-group-item justify-content-between d-flex">
+            <h5>Envio </h5>
+            <p id="envio"></p>
+          </li>
+          <li class="list-group-item justify-content-between d-flex">
+            <h5>Total </h5>
+            <p id="total"></p>
+          </li>
+        </ul>
+
+      </div>
+
+    </div>
+  </div>
+  <br>
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-2">
+      <br>
+      <button type="button" id="comprar" class="btn btn-primary btn-lg">¡Comprar!</button>
+    </div>
+  </div>
+
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Button trigger modal -->
+  <button type="button" id="formadepagoboton" class="btn btn-primary" data-toggle="modal" data-target="#formadepago">
+    Forma de Pago
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="formadepago" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Forma de Pago</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <div class="form-check">
+              <label class="form-check-label" for="transfer">
+                <input type="radio" id="transfer" class="form-check-input" name="radiopago" checked>Transferencia
+                Bancaria
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="bancaria">Ingrese correo de transferencia Bancaria:</label>
+              <input type="email" class="form-control" id="bancaria">
+            </div>
+          </div>
+          <div>
+            <div class="form-check">
+              <label class="form-check-label" for="credito">
+                <input type="radio" id="credito" class="form-check-input" name="radiopago">Tarjeta de credito
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="numtarjeta">Número de Tarjeta</label>
+              <input type="number" class="form-control" id="numtarjeta">
+              <label for="codigosec">Código de seguridad</label>
+              <input type="number" class="form-control" id="codigosec">
+              <label for="fechaexp">Fecha de expiración</label>
+              <input type="date" class="form-control" id="fechaexp">
+            </div>
+
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button id="guardarpago" type="button" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/cart.js"></script>
+
+</body>
+
+</html>
